@@ -6,7 +6,7 @@ import pymongo
 import time
 
 # REQUIRED VARIABLES
-client = pymongo.MongoClient("mongodb+srv://rajeevaditya143:electronicgeek*143@sandbox.1rcrl.mongodb.net/?retryWrites=true&w=majority")  # To connect to MONGODB
+client = pymongo.MongoClient("mongodb://localhost:27017")  # To connect to MONGODB
 mydb = client["Twitter_Database"]    # To create a DATABASE
 
 tweets_df = pd.DataFrame()
@@ -76,6 +76,7 @@ if z: # upload to DB
             ts = time.time()
             mycoll.update_many({}, {"$set": {"KeyWord_or_Hashtag": word+str(ts)}}, upsert=False, array_filters=None)
             st.success('Successfully uploaded to database', icon="✅")
+            st.snow()
         else:
             st.warning('Cant upload because there are no tweets', icon="⚠️")
 
