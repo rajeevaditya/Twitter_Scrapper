@@ -2,6 +2,8 @@
 
 Interative GUI using streamlit for twitter scraping 
 
+https://rajeevaditya-twitter-scrapper-twitter-scraper-1uye9n.streamlit.app/
+
 REQUIRED SKILLS:
 1.	Python scripting
 2.	MongoDB
