@@ -15,7 +15,8 @@ tweets_df = pd.DataFrame()
 a, b = st.columns([1, 5])
 
 def progress_bar():
-    my_bar = st.progress(0)
+    strat_bar = 0
+    my_bar = st.progress(strat_bar)
     for percent_complete in range(100):
         time.sleep(0.1)
         my_bar.progress(percent_complete + 1)
@@ -45,7 +46,7 @@ tweets_list = []
 
 # SCRAPE DATA USING TwitterSearchScraper
 if word:
-    progress_bar()
+    
     if option=='Keyword':
         
         for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'{word} + since:{start} until:{end}').get_items()):
@@ -63,6 +64,7 @@ if word:
                                 tweet.user.followersCount, tweet.user.friendsCount, tweet.replyCount,tweet.retweetCount,tweet.quoteCount, 
                                 tweet.likeCount,tweet.hashtags, tweet.sourceUrl, tweet.url,tweet.media ])
         tweets_df = pd.DataFrame(tweets_list, columns=['ID','Date','Content', 'Language', 'Username','followersCount', 'friendsCount', 'ReplyCount', 'RetweetCount', 'quoteCount', 'LikeCount', 'hashtags' ,'Source', 'Url','Media'])
+    progress_bar()
 else:
     st.warning(option,' cant be empty', icon="⚠️")
     e = RuntimeError('This is an exception of type RuntimeError')
