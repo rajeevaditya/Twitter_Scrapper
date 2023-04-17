@@ -14,6 +14,12 @@ mydb = client["Twitter_Database"]    # To create a DATABASE
 tweets_df = pd.DataFrame()
 a, b = st.columns([1, 5])
 
+def progress_bar():
+    my_bar = st.progress(0)
+    for percent_complete in range(100):
+        time.sleep(0.1)
+        my_bar.progress(percent_complete + 1)
+
 with a:
     st.text("")
     st.image("logo.PNG", width=50)
@@ -39,7 +45,9 @@ tweets_list = []
 
 # SCRAPE DATA USING TwitterSearchScraper
 if word:
+    progress_bar()
     if option=='Keyword':
+        
         for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'{word} + since:{start} until:{end}').get_items()):
             if i>=tweet_c:
                 break
@@ -65,13 +73,6 @@ else:
 def convert_df(df):    
     return df.to_csv().encode('utf-8')
 
-def progress_bar():
-    my_bar = st.progress(0)
-    for percent_complete in range(100):
-        time.sleep(0.1)
-        my_bar.progress(percent_complete + 1)
-
-
 if not tweets_df.empty:
     col1, col2, col3, col4 = st.columns(4)
     with col1:
@@ -88,16 +89,16 @@ if not tweets_df.empty:
         z=st.button('Upload Tweets to Database',key=3)        
 
 if c:
-    progress_bar()
+    
     st.success("The Scraped Data is Downloaded as .CSV file:",icon="✅")
     st.snow()  
 if j:
-    progress_bar()
+    
     st.success("The Scraped Data is Downloaded as .JSON file",icon="✅")
     st.snow()     
 
 if y: # DISPLAY
-    progress_bar()
+    
     st.success("Tweets Scraped Successfully:",icon="✅")
     st.snow()
     st.write(tweets_df)
