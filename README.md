@@ -2,7 +2,7 @@
 
 Interative GUI using streamlit for twitter scraping 
 
-https://rajeevaditya-twitter-scrapper-twitter-scraper-1uye9n.streamlit.app/
+https://rajeevaditya-twitter-scrapper-twitter-scraper-n7fbnm.streamlit.app/
 
 REQUIRED SKILLS:
 1.	Python scripting
