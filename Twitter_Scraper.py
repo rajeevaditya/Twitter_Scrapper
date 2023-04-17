@@ -16,7 +16,7 @@ a, b = st.columns([1, 5])
 
 with a:
     st.text("")
-    st.image("logo.png", width=50)
+    st.image("logo.PNG", width=50)
 with b:
     st.title("Twitter Data scraping")
 st.write("Type in a term to scrape relevant Tweets.")
