@@ -12,7 +12,7 @@ client = pymongo.MongoClient("mongodb://localhost:27017")  # To connect to MONGO
 mydb = client["Twitter_Database"]    # To create a DATABASE
 
 tweets_df = pd.DataFrame()
-a, b = st.columns([1, 5])
+a, b = st.columns([1, 8])
 
 def progress_bar():
     strat_bar = 0
